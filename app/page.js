@@ -1,5 +1,6 @@
 "use client"
 import Header from '@/Components/Header/Header'
+import SectionLayout from '@/Components/SectionLayout/SectionLayout'
 import Image from 'next/image'
 import { styled } from 'styled-components'
 
@@ -14,7 +15,9 @@ export default function Home() {
     <>
       <Header />
       <MainStyled>
+        <SectionLayout>
 
+        </SectionLayout>
       </MainStyled>
 
     </>
