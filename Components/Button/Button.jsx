@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from 'styled-components';
 
 const ButtonStyled = styled.button`
-    padding: 0.8rem 2rem;
+    padding: 0.5rem 2rem;
     border-radius: 30px;
     border: 2px solid var(--color-border);
     cursor: pointer;
