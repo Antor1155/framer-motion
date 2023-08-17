@@ -15,7 +15,7 @@ const LinesContainer = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   z-index: -1;
 
   display: flex;
@@ -23,9 +23,10 @@ const LinesContainer = styled.div`
 
   div{
     width: 1px;
-    height: 100vh; 
+    height: 100%; 
     background-color: var(--color-border);
     color: var(--color-border);
+    padding-top: 10vh;
 
     display: flex;
     flex-direction: column;
@@ -38,31 +39,31 @@ const LinesContainer = styled.div`
 `
 
 export default function RootLayout({ children }) {
+  const shapes = []
+
+  for (let i= 0; i < 11; i++){
+    shapes.push(<p>o</p>)
+    shapes.push(<p>x</p>)
+  }
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <LinesContainer>
           <div>
-            <p>o</p>
-            <p>x</p>
-            <p>o</p>
+           {shapes}
+          </div>
+          <div>
+           {shapes}
+          </div>
+          <div>
+           {shapes}
+          </div>
+          <div>
+           {shapes}
           </div>
           
-          <div>
-            <p>o</p>
-            <p>x</p>
-            <p>o</p>
-          </div>
-          <div>
-            <p>o</p>
-            <p>x</p>
-            <p>o</p>
-          </div>
-          <div>
-            <p>o</p>
-            <p>x</p>
-            <p>o</p>
-          </div>
+        
         </LinesContainer>
         {children}
       </body>
