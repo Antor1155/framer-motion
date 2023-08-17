@@ -2,13 +2,14 @@
 import Image from 'next/image'
 import logo from "@/public/logo.png"
 
-import React from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
 import Button from '../Button/Button'
 import { styled } from 'styled-components'
 
 import { FaRocket, FaWallet } from "react-icons/fa"
 import { Abril_Fatface } from 'next/font/google'
+import Hover3d from '@/utils/Hover'
 
 const abrid = Abril_Fatface({
     subsets: ["latin"],
@@ -72,12 +73,14 @@ const HeaderStyled = styled.header`
     }
 
     .header-content {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
         justify-content: space-between;
         align-items: center;
         gap: 4rem;
         min-height: calc(100vh - 10vh);
-        padding: 0 10rem 5rem 10rem;
+        padding: 5%;
 
         .text-content {
             h1{
@@ -94,11 +97,20 @@ const HeaderStyled = styled.header`
             }
         }
 
-        .image-content .image{
+        .image-content{
             padding: 1rem;
             border-radius: 8px;
             background-color: var(--color-bg);
             border: 1px solid var(--color-border);
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-content .image{
+
+            width: 100%;
+            height: 100%;
+            position: relative;
 
             img{
                 border-radius: 8px;
@@ -109,7 +121,12 @@ const HeaderStyled = styled.header`
 
 `;
 
+
 const Header = () => {
+    const hero = useRef(null)
+
+    const hoverHero = Hover3d(hero, {x: 50, y: -50, z: 30})
+
     return (
         <HeaderStyled>
             <nav>
@@ -141,7 +158,7 @@ const Header = () => {
 
             </nav>
 
-            <div className="header-content">
+            <div className="header-content" ref={hero}>
                 <div className="text-content">
                     <div className={abrid.className}>
                         <h1>Buy, collect and sell extraordinary NFTs</h1>
@@ -155,20 +172,27 @@ const Header = () => {
                                 color="#fff"
                                 border="1px solid #f2994a"
                                 icon={<FaRocket />}
-
                             />
-
                             <Button name="Learn More" />
                         </div>
                     </div>
                 </div>
-                <div className="image-content">
+
+                <div className="image-content"
+                    style={
+                        {
+                        transform: hoverHero.transform,
+                        transformStyle: "preserve-3d",
+                        perspective: "1000px"
+                    }
+                    }
+
+                >
                     <div className="image">
                         <Image
                             src="/images/monkey.png"
                             alt='hero'
-                            width={400}
-                            height={400} />
+                            fill={true} />
                     </div>
                 </div>
             </div>
