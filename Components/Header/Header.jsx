@@ -7,7 +7,14 @@ import Link from 'next/link'
 import Button from '../Button/Button'
 import { styled } from 'styled-components'
 
-import {FaRocket, FaWallet} from "react-icons/fa"
+import { FaRocket, FaWallet } from "react-icons/fa"
+import { Abril_Fatface } from 'next/font/google'
+
+const abrid = Abril_Fatface({
+    subsets: ["latin"],
+    weight: ["400"],
+
+})
 
 
 const HeaderStyled = styled.header`
@@ -64,6 +71,42 @@ const HeaderStyled = styled.header`
 
     }
 
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4rem;
+        min-height: calc(100vh - 10vh);
+        padding: 0 10rem 5rem 10rem;
+
+        .text-content {
+            h1{
+                font-size: clamp(2rem, 3vw, 3rem);
+                color: #f2994a;
+                transition: all 0.01s linear;
+                padding-bottom: 1.5rem;
+            }
+
+            .buttons {
+                display: flex;
+                gap: 1rem;
+                margin-top: 2.5rem;
+            }
+        }
+
+        .image-content .image{
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: var(--color-bg);
+            border: 1px solid var(--color-border);
+
+            img{
+                border-radius: 8px;
+            }
+        }
+
+    }
+
 `;
 
 const Header = () => {
@@ -71,7 +114,7 @@ const Header = () => {
         <HeaderStyled>
             <nav>
                 <div className='logo'>
-                    <Image src={logo} alt="logo" width={36}  />
+                    <Image src={logo} alt="logo" width={36} />
                     <h2>Logo</h2>
                 </div>
 
@@ -97,6 +140,38 @@ const Header = () => {
                 </ul>
 
             </nav>
+
+            <div className="header-content">
+                <div className="text-content">
+                    <div className={abrid.className}>
+                        <h1>Buy, collect and sell extraordinary NFTs</h1>
+
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, eius. Perspiciatis sequi labore sunt, corporis dolorum fugiat eligendi, consequuntur, voluptatem nihil hic delectus earum expedita maxime velit distinctio illum provident.</p>
+
+                        <div className='buttons'>
+                            <Button
+                                name="Get Started"
+                                background='#f2994a'
+                                color="#fff"
+                                border="1px solid #f2994a"
+                                icon={<FaRocket />}
+
+                            />
+
+                            <Button name="Learn More" />
+                        </div>
+                    </div>
+                </div>
+                <div className="image-content">
+                    <div className="image">
+                        <Image
+                            src="/images/monkey.png"
+                            alt='hero'
+                            width={400}
+                            height={400} />
+                    </div>
+                </div>
+            </div>
 
         </HeaderStyled>
     )
