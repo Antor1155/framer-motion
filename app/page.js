@@ -6,6 +6,7 @@ import { cards } from '@/utils/cards'
 import Card from '@/Components/Cards/Card'
 import Fullpage from '@/Components/Fullpage'
 import TextSection from '@/Components/TextSection/TextSection'
+import Footer from '@/Components/Footer/Footer'
 
 const MainStyled = styled.main`
   min-height: 100vh;
@@ -74,6 +75,7 @@ export default function Home() {
           <TextSection />
         </SectionLayout>
 
+        <Footer></Footer>
       </MainStyled>
 
     </>
